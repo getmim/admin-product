@@ -1,0 +1,82 @@
+<form  method="POST" class="needs-validation main" novalidate>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white navbar-shadow">
+        <div class="navbar-multiline mr-auto">
+            <span class="navbar-brand" href="#0">Product Editor</span>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= $this->router->to('adminHome') ?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?= $this->router->to('adminProduct') ?>">Product</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?= $subtitle ?></li>
+                </ol>
+            </nav>
+        </div>
+        <button class="btn btn-primary">Save</button>
+    </nav>
+
+    <div class="container p-3">
+        <div class="row mb-3">
+            <?= $form->csrfField('noob') ?>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <?= $form->field('name'); ?>
+                                <?= $this->partial('product/custom-field', ['position'=>'left-top-left']); ?>
+                            </div>
+                            <div class="col-md-6">
+                                <?= $form->field('slug'); ?>
+                                <?= $this->partial('product/custom-field', ['position'=>'left-top-right']); ?>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?= $this->partial('product/custom-field', ['position'=>'left-middle-top']); ?>
+                                <?= $form->field('content'); ?>
+                                <?= $this->partial('product/custom-field', ['position'=>'left-middle-bottom']); ?>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <?= $form->field('cover-url'); ?>
+                                <?= $form->field('cover-label'); ?>
+                                <?php if(module_exists('admin-product-category')): ?>
+                                    <?= $form->field('category', $opts['category']); ?>
+                                <?php endif; ?>
+                                <?= $form->field('status', $statuses) ?>
+                                <?= $this->partial('product/custom-field', ['position'=>'left-bottom-left']); ?>
+                            </div>
+                            <div class="col-md-8">
+                                <?= $form->field('gallery') ?>
+                                <?= $this->partial('product/custom-field', ['position'=>'left-bottom-right']); ?>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <?= $this->partial('product/custom-field', ['position'=>'left-bottom-right-left']); ?>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <?= $this->partial('product/custom-field', ['position'=>'left-bottom-right-right']); ?>
+                                    </div>
+                                    <?php foreach($prices as $fname): ?>
+                                        <div class="col-md-6">
+                                            <?= $form->field($fname) ?>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <?= $this->partial('site-meta/meta'); ?>
+                        <?= $this->partial('product/custom-field', ['position'=>'right']); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

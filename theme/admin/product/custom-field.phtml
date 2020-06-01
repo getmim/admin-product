@@ -1,0 +1,5 @@
+<?php if(isset($fields[$position])): ?>
+    <?php foreach($fields[$position] as $fname): ?>
+        <?= $form->field($fname); ?>
+    <?php endforeach; ?>
+<?php endif; ?>
