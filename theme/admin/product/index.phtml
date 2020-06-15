@@ -47,7 +47,7 @@
                                         <a href="<?= $this->router->to('adminProductEdit', ['id'=>$product->id]) ?>" class="btn btn-secondary" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <?php if($product->status->value == 3 && isset($product->page)): ?>
+                                        <?php if($product->status->value == 2 && isset($product->page)): ?>
                                             <a href="<?= $product->page ?>" class="btn btn-secondary" title="View Page" target="_blank">
                                                 <i class="fas fa-external-link-square-alt"></i>
                                             </a>
