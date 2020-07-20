@@ -33,7 +33,7 @@ class ProductController extends \Admin\Controller
             return $this->show404();
 
         $product = (object)[
-            'status'  => 1
+            'status'  => 2
         ];
 
         $id = $this->req->param->id;
