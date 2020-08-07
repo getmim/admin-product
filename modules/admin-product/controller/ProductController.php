@@ -89,8 +89,22 @@ class ProductController extends \Admin\Controller
         
         if(!($valid = $form->validate($product)) || !$form->csrfTest('noob'))
             return $this->resp('product/edit', $params);
-        
+
         $valid = $combiner->finalize($valid);
+
+        $valid->price_min = null;
+        $valid->price_max = null;
+        if(isset($valid->price)){
+            $prices = json_decode($valid->price);
+            if($prices){
+                foreach($prices as $price){
+                    if(is_null($valid->price_min) || $valid->price_min > $price)
+                        $valid->price_min = $price;
+                    if(is_null($valid->price_max) || $valid->price_max < $price)
+                        $valid->price_max = $price;
+                }
+            }
+        }
 
         if($id){
             if(!Product::set((array)$valid, ['id'=>$id]))
