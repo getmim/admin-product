@@ -99,6 +99,8 @@ class ProductController extends \Admin\Controller
             $prices = json_decode($valid->price);
             if($prices){
                 foreach($prices as $price){
+                    if(!$price)
+                        continue;
                     if(is_null($valid->price_min) || $valid->price_min > $price)
                         $valid->price_min = $price;
                     if(is_null($valid->price_max) || $valid->price_max < $price)
