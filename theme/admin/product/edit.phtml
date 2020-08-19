@@ -45,6 +45,9 @@
                                 <?php if(module_exists('admin-product-category')): ?>
                                     <?= $form->field('category', $opts['category']); ?>
                                 <?php endif; ?>
+                                <?php if(module_exists('admin-product-collateral')): ?>
+                                    <?= $form->field('collateral', $opts['collateral']); ?>
+                                <?php endif; ?>
                                 <?= $form->field('status', $statuses) ?>
                                 <?= $this->partial('product/custom-field', ['position'=>'left-bottom-left']); ?>
                             </div>

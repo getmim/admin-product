@@ -79,7 +79,8 @@ class ProductController extends \Admin\Controller
             'price'      => [null,                      null, 'json'],
             'cover'      => [null,                      null, 'json'],
             'meta'       => [null,                      null, 'json'],
-            'category'   => ['admin-product-category',  null, 'format', 'all', 'name', 'parent']
+            'category'   => ['admin-product-category',  null, 'format', 'all', 'name', 'parent'],
+            'collateral' => ['admin-product-collateral',null, 'format', 'all', 'name']
         ];
 
         $combiner = new Combiner($id, $c_opts, 'product');
