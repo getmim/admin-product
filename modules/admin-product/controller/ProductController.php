@@ -87,14 +87,14 @@ class ProductController extends \Admin\Controller
         $product  = $combiner->prepare($product);
 
         $params['opts'] = $combiner->getOptions();
-        
+
         if(!($valid = $form->validate($product)) || !$form->csrfTest('noob'))
             return $this->resp('product/edit', $params);
 
         $valid = $combiner->finalize($valid);
 
-        $valid->price_min = null;
-        $valid->price_max = null;
+        $valid->price_min = 0;
+        $valid->price_max = 0;
         if(isset($valid->price)){
             $prices = json_decode($valid->price);
             if($prices){
