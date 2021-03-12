@@ -2,7 +2,7 @@
 
 return [
     '__name' => 'admin-product',
-    '__version' => '0.2.0',
+    '__version' => '0.2.1',
     '__git' => 'git@github.com:getmim/admin-product.git',
     '__license' => 'MIT',
     '__author' => [
@@ -143,7 +143,7 @@ return [
                     'label' => 'Status',
                     'type' => 'select',
                     'rules' => [
-                        'required' => true 
+                        'required' => true
                     ]
                 ],
                 'content' => [
@@ -157,10 +157,7 @@ return [
                     'label' => 'Gallery',
                     'type' => 'image-list',
                     'form' => 'std-image',
-                    'rules' => [
-                        'required' => true,
-                        'empty' => false
-                    ]
+                    'rules' => []
                 ],
                 'meta-schema' => [
                     'options' => [
