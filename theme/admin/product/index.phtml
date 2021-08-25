@@ -47,14 +47,19 @@
                                         <a href="<?= $this->router->to('adminProductEdit', ['id'=>$product->id]) ?>" class="btn btn-secondary" title="Edit">
                                             <i class="fas fa-edit"></i>
                                         </a>
+
                                         <?php if($product->status->value == 2 && isset($product->page)): ?>
                                             <a href="<?= $product->page ?>" class="btn btn-secondary" title="View Page" target="_blank">
                                                 <i class="fas fa-external-link-square-alt"></i>
                                             </a>
                                         <?php endif; ?>
+
                                         <div class="btn-group btn-group-sm" role="group">
                                             <button id="product-action-<?= $product->id ?>" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
                                             <div class="dropdown-menu" aria-labelledby="product-action-<?= $product->id ?>">
+                                                <?php if(module_exists('admin-product-variant')): ?>
+                                                    <a class="dropdown-item" href="<?= $this->router->to('adminProductVariant', ['product' => $product->id]) ?>">Variants</a>
+                                                <?php endif; ?>
                                                 <a class="dropdown-item"
                                                     data-toggle="confirm"
                                                     data-text="Are you sure want to remove this item?"
