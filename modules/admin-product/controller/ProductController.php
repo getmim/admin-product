@@ -93,8 +93,8 @@ class ProductController extends \Admin\Controller
 
         $valid = $combiner->finalize($valid);
 
-        $valid->price_min = 0;
-        $valid->price_max = 0;
+        $valid->price_min = null;
+        $valid->price_max = null;
         if(isset($valid->price)){
             $prices = json_decode($valid->price);
             if($prices){
@@ -125,7 +125,7 @@ class ProductController extends \Admin\Controller
             'user'     => $this->user->id,
             'object'   => $id,
             'parent'   => 0,
-            'method'   => $id ? 2 : 1,
+            'method'   => isset($product->id) ? 2 : 1,
             'type'     => 'product',
             'original' => $product,
             'changes'  => $valid
