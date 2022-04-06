@@ -66,6 +66,12 @@
                                             <?= $form->field($fname) ?>
                                         </div>
                                     <?php endforeach; ?>
+
+                                    <?php if(module_exists('admin-product-brand')): ?>
+                                        <div class="col-md-6">
+                                            <?= $form->field('brand', $opts['brand']); ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
